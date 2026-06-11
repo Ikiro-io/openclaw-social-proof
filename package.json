@@ -1,0 +1,17 @@
+{
+  "name": "openclaw-social-proof",
+  "version": "0.1.0",
+  "description": "OpenClaw skill: find your best X posts and write Social proof to Ikiro via MCP",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test social-proof/tests/*.test.mjs",
+    "preflight": "node social-proof/scripts/check-x-connection.mjs",
+    "rank": "node social-proof/scripts/rank-social-proof.mjs",
+    "plan": "node social-proof/scripts/plan-ikiro-social-proof.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

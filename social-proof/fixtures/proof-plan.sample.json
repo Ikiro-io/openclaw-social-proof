@@ -1,0 +1,32 @@
+{
+  "lens": "curated_mix",
+  "candidateCount": 6,
+  "recommendedCount": 4,
+  "requiresApproval": true,
+  "publish": false,
+  "message": "I found 6 candidates and recommend 4.\n\nFeatured:\n1. authority / launch — Strong authority signal, launch/result proof, 18000 likes.\n\nI can import these to Ikiro now. Approve before I write.",
+  "items": [
+    {
+      "rank": 1,
+      "sourceUrl": "https://x.com/mayabuilds/status/1790000000000000001",
+      "proofTypes": ["authority"],
+      "thread": {
+        "isThread": true,
+        "urls": [
+          "https://x.com/mayabuilds/status/1790000000000000001",
+          "https://x.com/mayabuilds/status/1790000000000000002"
+        ]
+      }
+    },
+    {
+      "rank": 2,
+      "sourceUrl": "https://x.com/mayabuilds/status/1790000000000000005",
+      "proofTypes": ["launch", "demand", "visual"]
+    },
+    {
+      "rank": 3,
+      "sourceUrl": "https://x.com/mayabuilds/status/1790000000000000003",
+      "proofTypes": ["launch", "visual"]
+    }
+  ]
+}
