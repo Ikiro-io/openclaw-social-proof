@@ -25,7 +25,6 @@ test("buildApplyOperations emits expected social_proof calls", async () => {
     insertBlock: true,
     label: "Greatest hits",
     layout: "wall",
-    showStats: false,
   });
 
   assert.ok(ops.some((op) => op.type === "page.insert_block"));
@@ -34,6 +33,29 @@ test("buildApplyOperations emits expected social_proof calls", async () => {
   assert.ok(ops.some((op) => op.type === "social_proof.set_label"));
   assert.ok(ops.some((op) => op.type === "social_proof.set_layout"));
   assert.ok(ops.some((op) => op.type === "social_proof.reorder"));
+  assert.ok(!ops.some((op) => op.type === "social_proof.set_show_stats"));
+
+  const importOps = ops.filter((op) => op.type.startsWith("social_proof.import_"));
+  for (const op of importOps) {
+    assert.equal(typeof op.payload.likes, "number");
+    assert.equal(typeof op.payload.replies, "number");
+    assert.equal(typeof op.payload.reposts, "number");
+    assert.equal(typeof op.payload.views, "number");
+  }
+
+  const threadOp = ops.find((op) => op.type === "social_proof.import_thread");
+  assert.equal(threadOp.payload.likes, 18000);
+  assert.equal(threadOp.payload.replies, 880);
+  assert.equal(threadOp.payload.reposts, 2400);
+  assert.equal(threadOp.payload.views, 250000);
+
+  const launchOp = ops.find(
+    (op) =>
+      op.type === "social_proof.import_url" &&
+      op.payload.url === "https://x.com/mayabuilds/status/1790000000000000005",
+  );
+  assert.equal(launchOp.payload.likes, 3200);
+  assert.equal(launchOp.payload.views, 98000);
 
   for (const op of ops) {
     assert.equal(op.payload.expectedSourceVersionId, "src_fixture");
@@ -44,6 +66,7 @@ test("buildApplyOperations emits expected social_proof calls", async () => {
 
   assert.ok(plan.message.includes("I found"));
   assert.ok(plan.items.length > 0);
+  assert.ok(plan.items.every((item) => item.metrics?.likes != null));
 });
 
 test("maintain plan skips URLs already on the page", async () => {

@@ -32,6 +32,7 @@ export function buildProofPlan({
       rationale: item.rationale,
       scores: item.scores,
       thread: item.thread,
+      metrics: item.metrics,
       textPreview: item.text.slice(0, 140),
       badge: item.badge ?? null,
     })),

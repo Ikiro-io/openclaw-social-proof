@@ -31,7 +31,6 @@ async function main() {
     insertBlock: Boolean(args["insert-block"]),
     label: String(args.label ?? "Social proof"),
     layout: String(args.layout ?? "wall"),
-    showStats: args["show-stats"] === "true",
     sourceVersionId: args["source-version-id"] ?? null,
     operations: buildApplyOperations({
       plan: { items: recommended },
@@ -40,7 +39,6 @@ async function main() {
       insertBlock: Boolean(args["insert-block"]),
       label: String(args.label ?? "Social proof"),
       layout: String(args.layout ?? "wall"),
-      showStats: args["show-stats"] === "true",
     }),
   };
 

@@ -125,6 +125,16 @@ export class IkiroMcpClient {
   }
 }
 
+function itemImportMetrics(item) {
+  const m = item.metrics ?? {};
+  return {
+    likes: Number(m.likes ?? item.likes ?? 0) || 0,
+    replies: Number(m.replies ?? item.replies ?? 0) || 0,
+    reposts: Number(m.reposts ?? item.reposts ?? 0) || 0,
+    views: Number(m.views ?? item.views ?? 0) || 0,
+  };
+}
+
 export function buildApplyOperations({
   plan,
   blockFile = "blocks/social-proof.md",
@@ -132,7 +142,6 @@ export function buildApplyOperations({
   insertBlock = false,
   label = "Social proof",
   layout = "wall",
-  showStats = false,
 }) {
   const ops = [];
 
@@ -150,6 +159,7 @@ export function buildApplyOperations({
   }
 
   for (const item of plan.items) {
+    const metrics = itemImportMetrics(item);
     if (item.thread?.isThread && item.thread.urls.length > 1) {
       ops.push({
         type: "social_proof.import_thread",
@@ -157,6 +167,7 @@ export function buildApplyOperations({
           expectedSourceVersionId: sourceVersionId,
           file: blockFile,
           urls: item.thread.urls,
+          ...metrics,
         },
       });
     } else {
@@ -166,6 +177,7 @@ export function buildApplyOperations({
           expectedSourceVersionId: sourceVersionId,
           file: blockFile,
           url: item.sourceUrl,
+          ...metrics,
           ...(item.badge ? { badge: item.badge } : {}),
         },
       });
@@ -180,10 +192,6 @@ export function buildApplyOperations({
     {
       type: "social_proof.set_layout",
       payload: { expectedSourceVersionId: sourceVersionId, file: blockFile, layout },
-    },
-    {
-      type: "social_proof.set_show_stats",
-      payload: { expectedSourceVersionId: sourceVersionId, file: blockFile, showStats },
     },
   );
 

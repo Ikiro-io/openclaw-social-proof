@@ -34,6 +34,12 @@ async function main() {
     sourceUrl: item.sourceUrl,
     thread: item.thread ?? { isThread: false, urls: [item.sourceUrl] },
     badge: item.badge,
+    metrics: item.metrics ?? {
+      likes: item.likes,
+      replies: item.replies,
+      reposts: item.reposts,
+      views: item.views,
+    },
   }));
 
   const client = new IkiroMcpClient({ endpoint, agentKey });
@@ -58,7 +64,6 @@ async function main() {
     insertBlock: !block,
     label: payload.plan?.label ?? payload.label ?? "Social proof",
     layout: payload.mcpPlan?.layout ?? payload.layout ?? "wall",
-    showStats: payload.mcpPlan?.showStats ?? false,
   });
 
   if (dryRun) {

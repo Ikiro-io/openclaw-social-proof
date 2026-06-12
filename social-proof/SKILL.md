@@ -148,10 +148,12 @@ If no `social-proof` block: `page.insert_block` with `role: "social-proof"`.
 
 Then:
 
-- Single posts → `social_proof.import_url`
-- Threads → `social_proof.import_thread`
-- Configure → `social_proof.set_label`, `social_proof.set_layout`, `social_proof.set_show_stats`
+- Single posts → `social_proof.import_url` with `likes`, `replies`, `reposts`, `views` from x_search
+- Threads → `social_proof.import_thread` with the same metrics on the hook/root card
+- Configure → `social_proof.set_label`, `social_proof.set_layout`
 - Order → `social_proof.reorder`
+
+Always pass engagement metrics on every import call. Ikiro renders the X-style engagement row when these fields are present. Values are snapshots from import time (not live counts).
 
 Every write must include `expectedSourceVersionId` from the latest read.
 
