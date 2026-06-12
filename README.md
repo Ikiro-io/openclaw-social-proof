@@ -9,7 +9,7 @@ Free, open-source OpenClaw skill that finds your strongest X posts and writes th
 1. **Install the skill**
 
    ```sh
-   git clone https://github.com/ikiro/openclaw-social-proof
+   git clone https://github.com/Ikiro-io/openclaw-social-proof
    openclaw skills install ./openclaw-social-proof/social-proof
    ```
 
