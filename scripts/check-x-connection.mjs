@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { spawn } from "node:child_process";
-import { parseArgs, printJson } from "./lib/utils.mjs";
+import { parseArgs, printJson } from "../social-proof/scripts/lib/utils.mjs";
 
 const SMOKE_MESSAGE =
   "OAuth smoke test only. Use x_search, not web_search, to search X for posts mentioning OpenClaw from the last 2 days. Return PASS if x_search works through OAuth. Return FAIL with the exact error if there is auth, billing, missing credential, or API-key trouble.";

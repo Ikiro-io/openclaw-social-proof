@@ -27,7 +27,7 @@ Ikiro never stores X OAuth tokens. The user's local OpenClaw owns X auth.
 2. Run preflight (setup mode only):
 
    ```sh
-   node social-proof/scripts/check-x-connection.mjs
+   node scripts/check-x-connection.mjs
    ```
 
 3. On failure, print the remediation commands from the script output. Never suggest `web_search` as an X fallback.
@@ -206,7 +206,7 @@ Endpoint is the Ikiro MCP URL from Studio. Do not log the key.
 
 | Script | When |
 | --- | --- |
-| `check-x-connection.mjs` | Setup preflight only |
+| `scripts/check-x-connection.mjs` | Setup preflight only, from the cloned repo root |
 | `discover-x-posts.mjs` | Normalize x_search output |
 | `rank-social-proof.mjs` | Score + lens filter |
 | `plan-ikiro-social-proof.mjs` | Human plan + MCP op batch |

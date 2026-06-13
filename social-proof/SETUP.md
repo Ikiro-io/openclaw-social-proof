@@ -3,13 +3,13 @@
 This recipe is verified on the founder's setup (Mac mini). Run the preflight script after completing it:
 
 ```sh
-node social-proof/scripts/check-x-connection.mjs
+node scripts/check-x-connection.mjs
 ```
 
 Use `--fix` only when you explicitly want gateway restart and auth-order repair attempts:
 
 ```sh
-node social-proof/scripts/check-x-connection.mjs --fix
+node scripts/check-x-connection.mjs --fix
 ```
 
 ## 1. Log into xAI/Grok with OAuth

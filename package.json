@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "test": "node --test social-proof/tests/*.test.mjs",
-    "preflight": "node social-proof/scripts/check-x-connection.mjs",
+    "preflight": "node scripts/check-x-connection.mjs",
     "rank": "node social-proof/scripts/rank-social-proof.mjs",
     "plan": "node social-proof/scripts/plan-ikiro-social-proof.mjs"
   },

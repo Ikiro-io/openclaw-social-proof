@@ -18,7 +18,7 @@ Free, open-source OpenClaw skill that finds your strongest X posts and writes th
 2. **Connect X** — follow [social-proof/SETUP.md](social-proof/SETUP.md), then run:
 
    ```sh
-   node social-proof/scripts/check-x-connection.mjs
+   node scripts/check-x-connection.mjs
    ```
 
 3. **Paste your Ikiro Agent Key** when the skill asks (MCP endpoint + key from Ikiro Studio).
@@ -50,7 +50,7 @@ Ikiro never stores your X OAuth token. OpenClaw owns discovery; Ikiro owns deter
 
 | Script | Purpose |
 | --- | --- |
-| `check-x-connection.mjs` | Setup preflight: OAuth probe + `x_search` smoke test |
+| `scripts/check-x-connection.mjs` | Setup preflight: OAuth probe + `x_search` smoke test |
 | `discover-x-posts.mjs` | Normalize `x_search` output to candidate JSON |
 | `rank-social-proof.mjs` | Score and filter candidates by lens |
 | `plan-ikiro-social-proof.mjs` | Build human-readable plan + MCP operation batch |
